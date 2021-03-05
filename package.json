@@ -1,0 +1,97 @@
+{
+	"name": "qq-vsc",
+	"displayName": "qq-vsc",
+	"description": "",
+	"version": "0.0.1",
+	"publisher": "ankikong",
+	"engines": {
+		"vscode": "^1.53.0"
+	},
+
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:qq-vsc.helloWorld",
+		"onCommand:qq-vsc.send_group_msg",
+		"onCommand:qq-vsc.start",
+		"onCommand:qq-vsc.deploy",
+		"onCommand:qq-vsc.runServer",
+		"onCommand:qq-vsc.send_image",
+		"onCommand:qq-vsc.recall_message",
+		"onLanguage:qq"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "qq-vsc.start",
+				"title": "qq: start load message"
+			},
+			{
+				"command": "qq-vsc.send_group_msg",
+				"title": "qq: send message"
+			},
+			{
+				"command": "qq-vsc.deploy",
+				"title": "qq: deploy env"
+			},
+			{
+				"command": "qq-vsc.runServer",
+				"title": "qq: run MiraiGo Server"
+			},
+			{
+				"command": "qq-vsc.send_image",
+				"title": "qq: send images"
+			},
+			{
+				"command": "qq-vsc.recall_message",
+				"title": "qq: recall message"
+			}
+		],
+		"languages": [
+			{
+				"aliases": [
+					"qq-file",
+					"qq"
+				],
+				"extensions": [
+					".qq"
+				],
+				"id": "qq"
+			}
+		],
+		"menus":{
+			"editor/context": [
+				{
+					"when": "resourceLangId == qq",
+					"command": "qq-vsc.recall_message"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.53.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	},
+	"dependencies": {
+		"axios": "^0.21.1",
+		"hjson": "^3.2.2",
+		"moment": "^2.29.1",
+		"request": "^2.88.2",
+		"uuid": "^8.3.2",
+		"ws": "^7.4.3"
+	}
+}
